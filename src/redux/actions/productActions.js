@@ -14,7 +14,7 @@ import axios from 'axios';
 export const getProducts = (page, favouriteToggle) => async (dispatch) => {
 	dispatch(setLoading());
 	try {
-		const { data } = await axios.get(`/api/products/${page}/${10}`);
+		const { data } = await axios.get(`https://e-backend-beta.vercel.app/api/products/${page}/${10}`);
 		const { products, pagination } = data;
 		dispatch(setProducts(products));
 		dispatch(setPagination(pagination));
@@ -69,7 +69,7 @@ export const toggleFavorites = (toggle) => async (dispatch, getState) => {
 export const getProduct = (id) => async (dispatch) => {
 	dispatch(setLoading(true));
 	try {
-		const { data } = await axios.get(`/api/products/${id}`);
+		const { data } = await axios.get(`https://e-backend-beta.vercel.app/api/products/${id}`);
 		dispatch(setProduct(data));
 	} catch (error) {
 		dispatch(
@@ -91,7 +91,7 @@ export const createProductReview = (productId, userId, comment, rating, title) =
 	try {
 		const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
-		await axios.post(`/api/products/reviews/${productId}`, { comment, userId, rating, title }, config);
+		await axios.post(`https://e-backend-beta.vercel.app/api/products/reviews/${productId}`, { comment, userId, rating, title }, config);
 		dispatch(productReviewed(true));
 	} catch (error) {
 		dispatch(

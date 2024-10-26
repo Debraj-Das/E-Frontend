@@ -33,7 +33,7 @@ function App() {
   const [googleClient, setGoogleClient] = useState(null);
   useEffect(() => {
     const googleKey = async () => {
-      const { data: googleId } = await axios.get("/api/config/google");
+      const { data: googleId } = await axios.get("https://e-backend-beta.vercel.app/api/config/google");
       setGoogleClient(googleId);
     };
     googleKey();

@@ -20,7 +20,7 @@ export const getAllUsers = () => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		const { data } = await axios.get('api/users', config);
+		const { data } = await axios.get('https://e-backend-beta.vercel.app/api/users', config);
 		dispatch(getUsers(data));
 	} catch (error) {
 		setError(
@@ -42,7 +42,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		const { data } = await axios.delete(`api/users/${id}`, config);
+		const { data } = await axios.delete(`https://e-backend-beta.vercel.app/api/users/${id}`, config);
 		dispatch(userDelete(data));
 	} catch (error) {
 		setError(
@@ -64,7 +64,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		const { data } = await axios.get('api/orders', config);
+		const { data } = await axios.get('https://e-backend-beta.vercel.app/api/orders', config);
 		dispatch(getOrders(data));
 	} catch (error) {
 		setError(
@@ -86,7 +86,7 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		const { data } = await axios.delete(`api/orders/${id}`, config);
+		const { data } = await axios.delete(`https://e-backend-beta.vercel.app/api/orders/${id}`, config);
 		dispatch(orderDelete(data));
 	} catch (error) {
 		setError(
@@ -108,7 +108,7 @@ export const setDelivered = (id) => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		await axios.put(`api/orders/${id}`, {}, config);
+		await axios.put(`https://e-backend-beta.vercel.app/api/orders/${id}`, {}, config);
 		dispatch(setDeliveredFlag());
 	} catch (error) {
 		setError(
@@ -137,7 +137,7 @@ export const updateProduct =
 
 		try {
 			const { data } = await axios.put(
-				'api/products',
+				'https://e-backend-beta.vercel.app/api/products',
 				{ brand, name, category, stock, price, id, productIsNew, description, subtitle, stripeId, imageOne, imageTwo },
 				config
 			);
@@ -163,7 +163,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		const { data } = await axios.delete(`api/products/${id}`, config);
+		const { data } = await axios.delete(`https://e-backend-beta.vercel.app/api/products/${id}`, config);
 		dispatch(setProducts(data));
 		dispatch(setProductUpdateFlag());
 		dispatch(resetError());
@@ -187,7 +187,7 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
 	try {
-		const { data } = await axios.post(`api/products`, newProduct, config);
+		const { data } = await axios.post(`https://e-backend-beta.vercel.app/api/products`, newProduct, config);
 		dispatch(setProducts(data));
 		dispatch(setProductUpdateFlag());
 	} catch (error) {
@@ -210,7 +210,7 @@ export const removeReview = (productId, reviewId) => async (dispatch, getState) 
 	const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 	console.log('asdfdsaf');
 	try {
-		const { data } = await axios.put(`api/products/${productId}/${reviewId}`, {}, config);
+		const { data } = await axios.put(`https://e-backend-beta.vercel.app/api/products/${productId}/${reviewId}`, {}, config);
 		dispatch(setProducts(data));
 		dispatch(setReviewRemovalFlag());
 	} catch (error) {

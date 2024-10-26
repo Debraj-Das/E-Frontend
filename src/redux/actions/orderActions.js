@@ -19,7 +19,7 @@ export const setPayment = () => async (dispatch, getState) => {
 	try {
 		const config = { headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' } };
 
-		const { data } = await axios.post('api/checkout', newOrder, config);
+		const { data } = await axios.post('https://e-backend-beta.vercel.app/api/checkout', newOrder, config);
 		window.location.assign(data.url);
 	} catch (error) {
 		setError(
